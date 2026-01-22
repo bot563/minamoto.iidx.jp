@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- MyAnimeProfile Rebase-->
+	<head>
+		<title>アンジェリーナの家</title>
+		<meta name="description" content="公式kazokuminaアカウントのシンプルなプロフィール">
+		<meta name="keywords" content="kazokumina,かわいい、愛らしい、美しい">
+		<meta name="author" content="カゾクミナ">	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" type="image/x-icon" href="yahoo.jpg">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!--Styles-->
+		<!--style resets-->
+		<link rel="stylesheet" type="text/css" href="assets/styles/meyerweb-reset.css">
+		<!--Main Page Styles-->
+		<link rel="stylesheet" type="text/css" href="assets/styles/stylesheet.css">
+		
+		<!--media reporter for testing-->
+		<!--<link rel="stylesheet" type="text/css" href="assets/styles/MediaQuery-Reporter Styles.css">-->
+
+		<!--Scripts-->
+
+		<!--Font Awesome Icons-->
+		<script src="https://kit.fontawesome.com/2ebfb1fd60.js" crossorigin="anonymous"></script>
+		
+		<!--Main Page Fuinctions-->
+		<script type="text/javascript" src="assets/scripts/main_page_functions.js"></script>		
+	</head>
+	<body>
+				<div id="loader-wrapper">
+    <div class="loader-content">
+        <img src="assets/images/bubu-cute-dancing.gif" alt="Loading Bubu Dudu">
+        <div class="loading-text">読み込み中...</div>
+        <div class="progress-bar"><div class="progress"></div></div>
+    </div>
+</div>
+
+<style>
+    #loader-wrapper {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: #4b1633; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999999; 
+        transition: opacity 0.5s ease;
+    }
+
+    .loader-content { text-align: center; }
+
+    .loader-content img {
+        width: 150px; 
+        margin-bottom: 20px;
+    }
+
+    .loading-text {
+        color: white;
+        font-family: 'Arial', sans-serif;
+        font-size: 18px;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+    }
+
+    .progress-bar {
+        width: 200px;
+        height: 4px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 10px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .progress {
+        width: 0%;
+        height: 100%;
+        background: #ff4d4d;
+        animation: loading-anim 2s ease-in-out forwards;
+    }
+
+    @keyframes loading-anim {
+        0% { width: 0%; }
+        50% { width: 70%; }
+        100% { width: 100%; }
+    }
+    
+    .fade-out {
+        opacity: 0;
+        pointer-events: none;
+    }
+</style>
+		<div id="page_wrapper">
+			<div id="header">
+				<h1 id="page_title">いらっしゃいませ</h1>
+				<img id="profile_banner" src="assets/images/小さい.gif"></img>
+			</div><!-- header -->
+			<div id="auto-alert" class="pink-alert-overlay">
+    <div class="pink-alert-box">
+        <div class="pink-header">✨ようこそ ✨</div>
+        <div class="pink-content">
+            <div class="loading-heart">❤</div>
+            <p id="city-greeting">🛰️...</p>
+            <button onclick="dismissAlert()">さあ、入って！</button>
+        </div>
+    </div>
+</div>
+
+			<div id="bio">
+				<img id="profile_pic" src="assets/images/2.gif"></img>
+				<h2 id="name">アンジェリン</h2>
+				<h3 id="handle">@kazokumina<i class="fas fa-check-circle verified-badge"></i></h3>
+				<p id="biotext">美しい夕暮れの空の下、私はいつもエステティックな雲の間に広がるローファイな色合いのような、目に心地よいビジュアルを追い求めています。私は、歴史と芸術が深いロマンスの中で溶け合う、帝政時代の壮大さに心惹かれます。
+魂に響くようなロマンチックな物語を好みますが、かつての騎士のような迫力あるアクションシーンには胸が高鳴ります。深みのあるストーリーを楽しみつつ、時には気楽な娯楽を求めながら、予期せぬ笑いに癒やされています。.</p>
+				<div id="bio_socials">
+					<img src="assets/images/anime-dance.gif" class="mini-gif">
+										<img src="assets/images/anime-dance.gif" class="mini-gif">
+			 <a href="https://tiktok.com/@kazokumina" id="bio-social-tiktok"class="bio-social-item"><i class="fa-brands fa-tiktok"></i></a> 
+					<!--<a href="" id="bio-social-mastodon"class="bio-social-item"><i class="fa-brands fa-mastodon"></i></a> -->
+					<a href="" id="bio-social-instagram"class="bio-social-item"><i class="fa-brands fa-instagram"></i></a>
+					<a href="https://youtube.com/channel/UCu4BJJ7E18JR_B-ZoLKckYw?si=f-MK_5Pjaukz4GCh" id="bio-social-youtube"class="bio-social-item"><i class="fa-brands fa-youtube"></i></a>
+				</div>
+			</div><!-- bio -->
+
+			<div id="nav">
+				<button onclick="tab_selct('nav_about', 'tab_about')" id="nav_about" class="nav-item first-nav-item">自己紹介</button>
+				<button onclick="tab_selct('nav_spotlight', 'tab_spotlight')" id="nav_spotlight" class="nav-item nav-item-active nav-item-selected">注目作品</button>
+				<button onclick="tab_selct('nav_watching', 'tab_watching')" id="nav_watching" class="nav-item">チャット</button>
+				<button onclick="tab_selct('nav_linksandfollows', 'tab_linksandfollows')" id="nav_linksandfollows" class="nav-item">SNSリンク</button>
+			</div><!-- Nav -->
+			
+			<div id="tab_about" class="tab tab-actionable">
+				<div id="about_fields">
+					<div class="about-field"><i class="fas fa-venus field-icon"></i> 女性</div>
+					<div class="about-field"><i class="fas fa-birthday-cake field-icon"></i> 11月</div>
+					<div class="about-field"><i class="fas fa-map-marker-alt field-icon"></i> 東京都千代田区 </div>
+					<div class="about-field"><i class="fas fa-calendar field-icon"></i> 毎週、ゲームをしたりアニメを見たりする のが好きです。毎日でも！	</div>
+					<div class="about-field"><i class="fas fa-heart field-icon"></i> 趣味: <img class="waifu" src="assets/images/anime-dance.gif"></img> アニメ・ドラマ鑑賞とゲームが大好き。</div>
+					<div class="about-field"><i class="fas fa-microphone-alt field-icon"></i> 語学の勉強が好きです</div>
+				</div><!-- about fields -->
+				
+				<div class="about-tags">
+					<div class="about-tag">アクション</div>
+					<div class="about-tag">アドベンチャー</div>
+					<div class="about-tag">コメディ</div>
+					<div class="about-tag">綺麗</div>
+					<div class="about-tag">ファンタジー</div>					
+					<div class="about-tag">恋愛</div>
+					<div class="about-tag">日常系</div>					
+					<div class="about-tag">ツンデレ</div>
+					<div class="about-tag">可愛い</div>
+					<div class="about-tag">キュート</div>
+				</div><!-- about tags -->
+			</div><!-- about -->
+
+			<div id="main">
+				<div id="tab_spotlight" class="tab tab-actionable main-item">
+					<!--
+					Blank Example ====================================
+					<div class="spotlight-artical">
+						<h2 class="spotlight-article-title">
+							
+						</h2>
+						<p class="spotlight-article-text">
+							
+						</p>
+						<div class="spotlight-article-media-container">
+							<img class="spotlight-article-media" src="assets/images/spotlight-article-media/" alt=""></img>
+						</div>
+						<div class="spotlight-article-source-container">
+							<a class="spotlight-article-source-kitsu" href="">
+								<div class="source-kitsu-image-container">
+									<img class="source-kitsu-image" src="assets/images/spotlight-article-media/" alt=""></img>
+								</div>
+								<h4 class="source-kitsu-title"></h4>
+							</a>
+						</div>
+					</div>
+
+					Sub Artical Work In Progress ====================================
+					<div class="spotlight-artical">
+						<h2 class="spotlight-article-title">
+							Please Dub More Adult Cast Shows
+						</h2>
+						<p class="spotlight-article-text">
+							
+						</p>						
+						<div class="spotlight-sub-article">
+							<a class="spotlight-sub-article-title-link" href="https://kitsu.app/anime/wotaku-ni-koi-wa-muzukashii">
+								<h3 class="spotlight-sub-article-title">Wotakoi: Love Is Hard for Otaku</h3>
+							</a>
+							<div class="spotlight-sub-article-media-containter">
+								<img class="spotlight-sub-article-media" src="assets/images/spotlight-article-media/Please_Dub_More_Adult_Cast/article-media_01.webp" alt=""></img>
+							</div>
+							<p class="spotlight-sub-article-text">
+								
+							</p>
+						</div>
+						<div class="spotlight-sub-article">
+							<a class="spotlight-sub-article-title-link" href="https://kitsu.app/anime/kono-kaisha-ni-suki-na-hito-ga-imasu">
+								<h3 class="spotlight-sub-article-title">I Have a Crush at Work</h3>
+							</a>
+							<div class="spotlight-sub-article-media-containter">
+								<img class="spotlight-sub-article-media" src="assets/images/spotlight-article-media/Please_Dub_More_Adult_Cast/article-media_02.webp" alt=""></img>
+							</div>
+							<p class="spotlight-sub-article-text">
+								
+							</p>
+						</div>
+					</div>	
+
+					Drafts ====================================
+					<div class="spotlight-artical">
+						<h2 class="spotlight-article-title">
+							Let The Gods Baer Witness, A Hero’s Epic
+						</h2>
+						<p class="spotlight-article-text">
+							Take heed traveler, for the dungeon is alive with untold dangers, monsters, and disperse. Whether it be for riches, power, or the glory and prosperity of your familia; steal your resolve and prepare yourself for an exhilarating tale of magic, swords, and heroes. Adventure Awaits 
+						</p>
+						<div class="spotlight-article-media-container">
+							<img class="spotlight-article-media" src="assets/images/spotlight-article-media/DanMachi/article-media_01.jpeg" alt=""></img>
+						</div>
+						<div class="spotlight-article-source-container">
+							<a class="spotlight-article-source-kitsu" href="https://kitsu.app/anime/dungeon-ni-deai-wo-motomeru-no-wa-machigatteiru-no-darou-ka">
+								<div class="source-kitsu-image-container">
+									<img class="source-kitsu-image" src="assets/images/spotlight-article-media/DanMachi/article-source_01.jpg" alt=""></img>
+								</div>
+								<h4 class="source-kitsu-title">Is It Wrong to Try to Pick Up Girls in a Dungeon?</h4>
+							</a>
+						</div>
+					</div>					
+					-->
+					<div class="spotlight-artical">
+						<h2 class="spotlight-article-title">
+							エバーテイル
+						</h2>
+						<p class="spotlight-article-text">
+							 「エバーテイル」には本当に心を奪われています。プレイするたびに胸が熱くなり、思わず息を呑むような瞬間の連続です。ストーリーの深さとキャラクターたちの情熱に、いつも圧倒されています。
+> 特に祈（いのり）と司（つかさ）の関係性が大好きです！お互いを高め合い、最高の自分を引き出そうとする二人の純粋な想いには、本当に感動します。司は今では私の一番お気に入りのキャラクターになりました。
+> 素晴らしいアニメーション、そして最高に盛り上がるOPとEDも最高です！このゲームに出会えて本当に良かったですし、今でも現役で毎日夢中でプレイしています。これからもずっと遊び続けたい、私にとって特別な作品です！
+						</p>
+						<div class="spotlight-article-media-container">
+							<img class="spotlight-article-media" src="assets/images/spotlight-article-media/Medalist/エバーテイル.jpeg" alt=""></img>
+						</div>
+						<div class="spotlight-article-source-container">
+							<a class="spotlight-article-source-kitsu" href="https://play.google.com/store/apps/details?id=com.zigzagame.evertale&pli=1">
+								<div class="source-kitsu-image-container">
+									<img class="source-kitsu-image" src="assets/images/spotlight-article-media/Medalist/2.webp" alt=""></img>
+								</div>
+								<h4 class="source-kitsu-title">ダウンロードしたい場合</h4>
+							</a>
+						</div>
+					</div>
+
+					<div class="spotlight-artical">
+						<h2 class="spotlight-article-title">
+							バトル・オブ・ウォーシップ
+						</h2>
+						<p class="spotlight-article-text">
+							バトル・オブ・ウォーシップも現役でプレイ中！リアルな海戦の迫力と、戦略を練って戦うのがとにかく面白いです。毎日ログインして艦隊を強化するのが日課になっています。これからも最強の艦隊を目指して、海上の戦いを楽しんでいきます！
+						</p>
+						<div class="spotlight-article-media-container">
+							<img class="spotlight-article-media" src="https://play-lh.googleusercontent.com/MjHrO1CM1XyljQI36ErEtfpDtqSa8XQAZ7IeHA8FbEYre001QuYE2gGd-Cr1UDDKmh8=w1052-h592-rw" alt=""></img>
+						</div>
+						<div class="spotlight-article-source-container">
+							<a class="spotlight-article-source-kitsu" href="https://play.google.com/store/apps/details?id=com.CubeSoftware.BattleOfWarships&hl=ja&referrer=utm_source%3Dgoogle%26utm_medium%3Dorganic%26utm_term%3D%E8%BB%8D%E8%89%A6%E3%81%AE%E6%88%A6%E3%81%84+play+store&pcampaignid=APPU_1_Zqdvac7jFe-TseMPt9zlmAc">
+								<div class="source-kitsu-image-container">
+									<img class="source-kitsu-image" src="https://play-lh.googleusercontent.com/YJHdGpwSqB5SE6XSubNL9hvM7Rz9Ot-Bpj1Psjm0YRVRr8wZzT0RyDI73Z9JHaswhd2Z=w480-h960-rw" alt=""></img>
+								</div>
+								<h4 class="source-kitsu-title">ダウンロードしたい場合</h4>
+							</a>
+						</div>
+					</div>
+					<div class="spotlight-artical">
+						<h2 class="spotlight-article-title">
+							イルーナ戦記オンライン
+						</h2>
+						<p class="spotlight-article-text">
+							イルーナ戦記（Iruna Online）も現役でガッツリ攻略中です！これぞMMORPGっていう自由度と、コツコツ進めていく冒険の楽しさがたまらないですね。今でも毎日ログインして、キャラの育成や装備集めに励んでいます。これからもこの広大な世界をマイペースに旅し続けます！
+						</p>
+						<div class="spotlight-article-media-container">
+							<img class="spotlight-article-media" src="https://play-lh.googleusercontent.com/ypH8BewaXdITifh4UnoTPP9ktO4qd_piv3BIC4gRIzNe9oMvVxCSgdOp31jklyW1DTE=w1052-h592-rw" alt=""></img>
+						</div>
+						<div class="spotlight-article-source-container">
+							<a class="spotlight-article-source-kitsu" href="https://play.google.com/store/apps/details?id=com.asobimo.iruna_en&hl=id&referrer=utm_source%3Dgoogle%26utm_medium%3Dorganic%26utm_term%3Diruna+rpg&pcampaignid=APPU_1_joRvaajPKqexwcsPq6vc0Qg">
+								<div class="source-kitsu-image-container">
+									<img class="source-kitsu-image" src="https://play-lh.googleusercontent.com/IrRr9u0Le8UvwnI1NjVq6UZXY5IalaTRT3qjSrfcSWR0rUT5jtOSoJKPbL5xQXIImg=w480-h960-rw" alt=""></img>
+								</div>
+								<h4 class="source-kitsu-title">ダウンロードしたい場合</h4>
+							</a>
+						</div>
+					<div class="spotlight-artical">
+						<h2 class="spotlight-article-title">
+							サクラスクールシミュレーター
+						</h2>
+						<p class="spotlight-article-text">
+					サクラスクールシミュレーターは、今はもう遊んでいませんが、前はかなりやり込んでいました！自由すぎる世界観でいろいろ遊び尽くしたのが良い思い出です。今は他のゲームがメインですが、たまにあのハチャメチャな雰囲気が懐かしくなりますね。
+						</p>
+						<div class="spotlight-article-media-container">
+							<img class="spotlight-article-media" src="https://play-lh.googleusercontent.com/7NeVQ7sN-4KqFKj_MMBMiTaMWutsDuOA42C0Oz98ZFgbNQce78qdI9B65_Mb_suAOvyi=w1052-h592-rw" alt=""></img>
+						</div>
+						<div class="spotlight-article-source-container">
+							<a class="spotlight-article-source-kitsu" href="https://play.google.com/store/apps/details?id=jp.garud.ssimulator&hl=ja&referrer=utm_source%3Dgoogle%26utm_medium%3Dorganic%26utm_term%3D%E3%82%B5%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%AF%E3%83%BC%E3%83%AB%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC&pcampaignid=APPU_1_mYFvad_kEPLvseMPnvvSgQs">
+								<div class="source-kitsu-image-container">
+									<img class="source-kitsu-image" src="https://play-lh.googleusercontent.com/kE2hDKCtPcpI8nR0UAGZ7x0tHJQXooY-54bMyar5H2G_Y8-1-VxpB111tAqVCxNn8g=w480-h960-rw" alt=""></img>
+								</div>
+								<h4 class="source-kitsu-title">ダウンロードしたい場合</h4>
+							</a>
+						</div>
+					</div>					
+					<div class="spotlight-artical">
+						<h2 class="spotlight-article-title">
+							ミディーバル - アイドル・ プレーヤー
+						</h2>
+						<p class="spotlight-article-text">
+							ミディーバル・アイドル・プレーヤーは、今はもうやってないですが、まったり楽しめる良いゲームでした。中世の世界観が独特で、暇つぶしやリラックスしたい時にちょうど良かったです。たまにあの独特な雰囲気が恋しくなりますね。
+						</p>
+						<div class="spotlight-article-media-container">
+							<img class="spotlight-article-media" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZBhzEt1fUYiq0EfkGGsvIiwjecpYEOZTktcsdOQZHEA&s=10" alt=""></img>
+						</div>
+						<div class="spotlight-article-source-container">
+							<a class="spotlight-article-source-kitsu" href="https://play.google.com/store/apps/details?id=com.playesta.medieval&hl=ja&referrer=utm_source%3Dgoogle%26utm_medium%3Dorganic%26utm_term%3D%E3%83%9F%E3%83%87%E3%82%A3%E3%83%BC%E3%83%90%E3%83%AB+-+%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%83%BB+%E3%83%97%E3%83%AC%E3%83%BC%E3%83%A4%E3%83%BC&pcampaignid=APPU_1_In1vaa2rJMOIg8UP1P-n8Qo">
+								<div class="source-kitsu-image-container">
+									<img class="source-kitsu-image" src="https://play-lh.googleusercontent.com/b6P1VnV55IUCIArMfqHKdN1RiuWZBpTUfe1A33X30O6Jz-DeGSuP8NCg9qZ_hqQqcw=w480-h960-rw" alt=""></img>
+								</div>
+								<h4 class="source-kitsu-title">ダウンロードしたい場合</h4>
+							</a>
+						</div>
+					</div>
+					<div class="spotlight-artical">
+						<h2 class="spotlight-article-title">
+							漂流少女
+						</h2>
+						<p class="spotlight-article-text">
+漂流少女も前はよく遊んでいました。今はもうプレイしていませんが、独特の世界観とゆったりした雰囲気が魅力的なゲームです。のんびり釣りをしながら進めるのが心地よくて、癒やされたい時には最高でした。
+						</p>
+						<div class="spotlight-article-media-container">
+							<img class="spotlight-article-media" src="assets/images/spotlight-article-media/All_gas,_no_breaks,_an_absolute_beast/フエア.jpeg" alt=""></img>
+						</div>
+						<div class="spotlight-article-source-container">
+							<a class="spotlight-article-source-kitsu" href="https://play.google.com/store/apps/details?id=exize.tapas.girlAdrift&hl=zh_TW&referrer=utm_source%3Dgoogle%26utm_medium%3Dorganic%26utm_term%3D%E6%BC%82%E6%B5%81%E5%B0%91%E5%A5%B3&pcampaignid=APPU_1_73pvafyfCIaWwcsPudfeiAIhttps://play.google.com/store/apps/details?id=exize.tapas.girlAdrift&hl=zh_TW&referrer=utm_source%3Dgoogle%26utm_medium%3Dorganic%26utm_term%3D%E6%BC%82%E6%B5%81%E5%B0%91%E5%A5%B3&pcampaignid=APPU_1_73pvafyfCIaWwcsPudfeiAI">
+								<div class="source-kitsu-image-container">
+									<img class="source-kitsu-image" src="https://play-lh.googleusercontent.com/s04YjK-qgEeZ0LuaAP4dFpwpzEwvp4pbgnDe5ZmAIZb_eSsUokqvlbJYn48bK6wZrn4=w480-h960-rw" alt=""></img>
+								</div>
+								<h4 class="source-kitsu-title">ダウンロードしたい場合</h4>
+							</a>
+						</div>
+					</div>					
+					<div class="spotlight-artical">
+						<h2 class="spotlight-article-title">
+							GTAオンライン
+						</h2>
+						<p class="spotlight-article-text">
+							GTAサンアンドレアスのオンラインは、今はもうプレイしていませんが、そこで最高の友人たちに出会えました。国も文化も違いますが、とても信頼できる二人の女性の友人ができて、今でも交流が続いています。ゲームを離れても繋がっていられる、私にとって本当に大切な縁です。
+						</p>
+						<div class="spotlight-article-media-container">
+							<img class="spotlight-article-media" src="assets/images/spotlight-article-media/Holo_and_Lawrence_Are_Back/gta.jpg" alt=""></img>
+						</div>
+						<div class="spotlight-article-source-container">
+							<a class="spotlight-article-source-kitsu"
+								<div class="source-kitsu-image-container">
+								</div>
+								<h4 class="source-kitsu-title">見せられないし、分からない </h4>
+							</a>
+						</div>
+					</div>
+					<div class="spotlight-artical">
+						<h2 class="spotlight-article-title">
+							ロブロックス
+						</h2>
+						<p class="spotlight-article-text">
+							ロブロックスは今はもう遊んでいませんが、前は色々なワールドを巡って楽しんでいました。今は引退して他のゲームに移りましたが、たまにあの自由な雰囲気が懐かしくなりますね。
+						</p>
+						<div class="spotlight-article-media-container">
+							<img class="spotlight-article-media" src="assets/images/spotlight-article-media/Delicious_in_Dungeon/roblox.webp" alt=""></img>
+						</div>
+						<div class="spotlight-article-source-container">
+							<a class="spotlight-article-source-kitsu" href="https://play.google.com/store/apps/details?id=com.roblox.client&hl=ja&referrer=utm_source%3Dgoogle%26utm_medium%3Dorganic%26utm_term%3D%E3%83%AD%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF%E3%82%B9&pcampaignid=APPU_1_LXVvab3wGOedseMPipOR8QY">
+								<div class="source-kitsu-image-container">
+									<img class="source-kitsu-image" src="https://play-lh.googleusercontent.com/7cIIPlWm4m7AGqVpEsIfyL-HW4cQla4ucXnfalMft1TMIYQIlf2vqgmthlZgbNAQoaQ=w480-h960-rw" alt=""></img>
+								</div>
+								<h4 class="source-kitsu-title">ダウンロードしたい場合</h4>
+							</a>
+						</div>
+					</div>
+					<div class="spotlight-artical">
+						<h2 class="spotlight-article-title">
+							ブロークン・ドーン:Trauma HD
+						</h2>
+						<p class="spotlight-article-text">
+							ブロークン・ドーン：Trauma HD
+> このゲームは前に対策で少しだけ遊んでいましたが、今はもうプレイしていません。短期間でしたが、グラフィックの雰囲気やアクションは結構楽しめました。今は他のゲームにハマっているので、良い思い出の一つです。
+						</p>
+						<div class="spotlight-article-media-container">
+							<img class="spotlight-article-media" src="https://play-lh.googleusercontent.com/UsFxQNLxC2JjbdYoFhTAffWezU-XzBuHkQB-eJQoraO4nmwP1wsgVt8OrOZSkwX5iOU=w1052-h592-rw" alt=""></img>
+						</div>
+						<div class="spotlight-article-source-container">
+							<a class="spotlight-article-source-kitsu" href="https://play.google.com/store/apps/details?id=com.dawn.x1.gp.hd">
+								<div class="source-kitsu-image-container">
+									<img class="source-kitsu-image" src="https://play-lh.googleusercontent.com/qNWfFLXFszTPgtda7F78Vssd1w1x0yw02Lc680IJCyEhsA0dYHofLqDOICCxXrrjSIjg=w480-h960-rw" alt=""></img>
+								</div>
+								<h4 class="source-kitsu-title">ダウンロードしたい場合</h4>
+							</a>
+						</div>
+					</div>					
+					<div class="spotlight-artical">
+						<h2 class="spotlight-article-title">
+							王の名誉 
+						</h2>
+						<p class="spotlight-article-text">
+							クオリティの高い面白いMOBAでしたが、当時はたまにしかログインできず、数週間に一度遊ぶような感じでした。結局、継続してプレイできなくてアンインストールしてしまいましたが、ゲーム自体の出来はすごく良かった記憶があります。
+						</p>
+						<div class="spotlight-article-media-container">
+							<img class="spotlight-article-media" src="assets/images/spotlight-article-media/The_Apothecary_Diaries/king.jpeg" alt=""></img>
+						</div>
+						<div class="spotlight-article-source-container">
+							<a class="spotlight-article-source-kitsu" href="https://play.google.com/store/apps/details?id=com.levelinfinite.sgameGlobal&hl=ja&referrer=utm_source%3Dgoogle%26utm_medium%3Dorganic%26utm_term%3D%E7%8E%8B%E3%81%AE%E5%90%8D%E8%AA%89&pcampaignid=APPU_1_hFtvad6iD_2MseMPsoGloQU">
+								<div class="source-kitsu-image-container">
+									<img class="source-kitsu-image" src="https://play-lh.googleusercontent.com/hEm5NVeEv7UfFJaK8GZdfWe7p3DB_VvYx57qIEHbR0tMV_NToziH0Vbgd6CxLiWF-iURpAe-jsC_UGUDt0diPQ=w480-h960-rw" alt=""></img>
+								</div>
+								<h4 class="source-kitsu-title">ダウンロードしたい場合</h4>
+							</a>
+						</div>
+					</div>					
+					<div class="spotlight-artical">
+						<h2 class="spotlight-article-title">
+							バーチャルドロイド IA
+						</h2>
+						<p class="spotlight-article-text">
+							2018年頃に遊んでいましたが、今はもう全くプレイしていません。当時はあの仮想空間での交流が新鮮で面白かったですね。今はもう離れてから長い時間が経ちましたが、昔懐かしい思い出の一つとして記憶に残っています。
+						</p>
+						<div class="spotlight-article-media-container">
+							<img class="spotlight-article-media" src="https://play-lh.googleusercontent.com/_SeCSnH1UflzrkMK6cDWNrOaHQBjWVivXrpl_dx4qwKOi3ioOa6Ui-LrtmLTlAbSPQ=w1052-h592-rw" alt=""></img>
+						</div>
+						<div class="spotlight-article-source-container">
+							<a class="spotlight-article-source-kitsu" href="https://play.google.com/store/apps/details?id=com.soulcastry.virtualdroid2">
+								<div class="source-kitsu-image-container">
+									<img class="source-kitsu-image" src="https://play-lh.googleusercontent.com/oD51LG4oxwrSur0FAKY6lxTA-WkVuYgCNlYKBtsjflphQHMkcrrxSews5wYo8AhmCauxHsJ6VMEGlT8RWo6C=w480-h960-rw" alt=""></img>
+								</div>
+								<h4 class="source-kitsu-title">ダウンロードしたい場合</h4>
+							</a>
+						</div>
+					</div>
+					<div class="spotlight-artical">
+						<h2 class="spotlight-article-title">
+							モバイルジェンド:Bang Bang
+						</h2>
+						<p class="spotlight-article-text">
+							2018年頃から長らく遊んでいましたが、途中でアンインストールしたり、去年また復帰したりと、付かず離れずな感じでプレイしていました。今はもう遊んでいませんが、思い出した頃にまたやりたくなるような、不思議な魅力があるゲームでしたね。
+						</p>
+						<div class="spotlight-article-media-container">
+							<img class="spotlight-article-media" src="assets/images/spotlight-article-media/Super_Chill,_Max_Comfy/bangbang.jpeg" alt=""></img>
+						</div>
+						<div class="spotlight-article-source-container">
+							<a class="spotlight-article-source-kitsu" href="https://play.google.com/store/apps/details?id=com.mobile.legends&hl=ja&referrer=utm_source%3Dgoogle%26utm_medium%3Dorganic%26utm_term%3D%E3%83%A2%E3%83%90%E3%82%A4%E3%83%AB%E3%83%AC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%89&pcampaignid=APPU_1_HVZvafwYtNyx4w-_harxAg">
+								<div class="source-kitsu-image-container">
+									<img class="source-kitsu-image" src="https://play-lh.googleusercontent.com/NiIHdrOS85r76ggTpn1uLxslWAfmvi1WVVQY5Enrj3ZAcVBcb11RkkTFbej8qxB9UK0JPDhRVajVz_ogmqiC=w480-h960-rw" alt=""></img>
+								</div>
+								<h4 class="source-kitsu-title">ダウンロードしたい場合</h4>
+							</a>
+						</div>
+					</div>
+				</div>
+				
+				<div id="tab_watching" class="tab tab-actionable main-item">
+					<div class="watching-item"><!--Currently Watching-->
+						<h2 class="section-heading">丁寧におしゃべりしましょうね😊</h2>
+						<div class="tiled-list scrolling-tiled-list">
+						</div><!-- tiled-list -->
+					</div><!-- Currently Watching-->
+				</div><!-- watching -->
+			</div><!-- main -->
+
+			<div id="tab_linksandfollows" class="tab tab-actionable sidebar-content">
+				
+				<div class="lf-list">
+					<h3 class="lf-heading">マネージャー&アシスタント&写真家</h3>
+					<a class="lf-link" href="https://animekarmalist.com/">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/animekarma-icon.png"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">r/Anime Karma Ranking</span>
+								<span class="lf-handle"><i class="fa-solid fa-link lf-handle-icon"></i> AnimeKarmaList.com</span>
+							</div>
+						</div>
+					</a>						
+					<a class="lf-link" href="https://www.crunchyroll.com/news/seasonal-lineup/2025/9/17/fall-2025-anime-crunchyroll">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/Crunchyroll_fall_2025_Season.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">Crunchyroll Fall 2025</span>
+								<span class="lf-handle"><i class="fa-solid fa-link lf-handle-icon"></i> crunchyroll.com</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link" href="https://news.hidive.com/">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/hidive.png"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">HIDIVE News and Announcements</span>
+								<span class="lf-handle"><i class="fa-solid fa-link lf-handle-icon"></i> hidive.com</span>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="lf-list">
+					<h3 class="lf-heading">クリエイター＆協力者＆その他🎤</h3>							
+						<a class="lf-link" href="https://tiktok.com/@jesicaatrgn_">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/友達-icon.ico"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">Swetly <span class="friend-tag">良い友達</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-tiktok lf-handle-icon"></i>@jesicaatrgn_ 🇮🇩</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link" href="https://tiktok.com/@naliaalan">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/友達-icon2.ico"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">Naila <span class="friend-tag">良い友達</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-tiktok lf-handle-icon"></i>@naliaalan 🇮🇩</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link" href="https://www.tiktok.com/@faheem3100">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="https://p16-common.tiktokcdn-us.com/tos-alisg-avt-0068/a9258bcb3f9163e1c5c554edb965ccc1~tplv-tiktokx-cropcenter-q:720:720:q70.webp?dr=8836&idc=useast5&ps=87d6e48a&refresh_token=5e88239c&s=PUBLISH&sc=avatar&shcp=132edbea&shp=d05b14bd&t=223449c4&x-expires=1769094000&xature=eVis%2FLqNWemZcCXqcWugT7L1Mo0%3D"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">🔥❤️فہیم بھٹی 🥰💯</span>
+								<span class="lf-handle"><i class="fa-brands fa-tiktok lf-handle-icon"></i>@faheem3100</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link" href="https://www.tiktok.com/@user6623846318425">
+						<div class="lf-item-container">
+							<img loading="Lazy" class="lf-image" src="https://p16-common.tiktokcdn-us.com/tos-alisg-avt-0068/14798bf550ceb34b025f1740045017a3~tplv-tiktokx-cropcenter-q:720:720:q70.webp?dr=8836&idc=useast5&ps=87d6e48a&refresh_token=378013ab&s=PUBLISH&sc=avatar&shcp=132edbea&shp=d05b14bd&t=223449c4&x-expires=1769094000&xature=nqBdS60Fj9AZYI22b8dGTGjT0ec%3D"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">いーのーき♪</span>
+								<span class="lf-handle"><i class="fa-solid fa-link lf-handle-icon"></i>@user6623846318425</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link" href="https://twitter.com/TorinoAqua">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/twitterpropic-torino.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">torino</span>
+								<span class="lf-handle"><i class="fa-brands fa-twitter lf-handle-icon"></i> @TorinoAqua</span>
+							</div>
+						</div>
+					</a>					
+					<a class="lf-link" href="https://twitter.com/tokkyusan">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/twitterpropic-Tokkyu.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">Tokkyu</span>
+								<span class="lf-handle"><i class="fa-brands fa-twitter lf-handle-icon"></i> @tokkyusan</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link" href="https://bsky.app/profile/yohan1754.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/twitterpropic-Free-Style.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">Free Style</span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @yohan1754.bsky.social</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link" href="https://twitter.com/LYDart_Mclo">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/twitterpropic-LYDart_Mclo.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">MCLO</span>
+								<span class="lf-handle"><i class="fa-brands fa-twitter lf-handle-icon"></i> @LYDart_Mclo</span>
+							</div>
+						</div>
+					</a>					
+					<button onclick="more_artistfanart_btn()" id="more_artistfanart_btn" class="more-lf-link-btn">Show more</button>
+					<a class="lf-link more-lf-artistfanart" href="https://x.com/ryosuketarou">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/twitterpropic-ryosuketarou.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">タケウチ　リョースケ</span>
+								<span class="lf-handle"><i class="fa-brands fa-twitter lf-handle-icon"></i> @ryosuketarou</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/1tzah.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/twitterpropic-1TZAH.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">▓ 𝙸𝚝𝚣𝚊𝚑 ▒</span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @1tzah.bsky.social</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/pixeljess.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/pixeljess.png"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">Pixel Jess</span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @pixeljess.bsky.social</span>
+							</div>
+						</div>
+					</a>					
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/leaphere.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/leaphere_.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">✧ Leaphere</span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @leaphere.bsky.social</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/hyogonosuke.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/hyogonosuke.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">HYOGONOSUKE</span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @hyogonosuke.bsky.social</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/waker.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/twitterpropic-aywakutakuay.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">w a k e r</span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @waker.bsky.social</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/uchihajake.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/uchiha_jake.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">uchiha_jake</span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @uchihajake.bsky.social</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/lelastslayer.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/lelastslayer.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">Lelastslayer</span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @lelastslayer.bsky.social</span>
+							</div>
+						</div>
+					</a>					
+					<a class="lf-link more-lf-artistfanart" href="https://x.com/amyia_art">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/amyia_art.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">Aryi</span>
+								<span class="lf-handle"><i class="fa-brands fa-twitter lf-handle-icon"></i> @amyia_art</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/aosorabluesky.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/twitterpropic-aosora5088.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">aosora</span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @aosorabluesky.bsky.social</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/yotsumishiro.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/YotsumiShiro.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">四海紫郎</span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @yotsumishiro.bsky.social</span>
+							</div>
+						</div>
+					</a>
+					
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/cutesexyrobutts.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/twitterpropic-Cutesexyrobutts.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">Cutesexyrobutts <span class="nsfw-tag">nsfw</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @cutesexyrobutts.bsky.social</span>
+							</div>
+						</div>
+					</a>					
+					<a class="lf-link more-lf-artistfanart" href="https://twitter.com/MiraiHikariArt">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/twitterpropic-Mirai.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">Mirai <span class="nsfw-tag">nsfw</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-twitter lf-handle-icon"></i> @MiraiHikariArt</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/arachnart.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/twitterpropic-arachnart33.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">arachnart <span class="nsfw-tag">nsfw</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @arachnart.bsky.social</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/snegovski9623.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/twitterpropic-Snegovski9623.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">SNEGOVSKI <span class="nsfw-tag">nsfw</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @snegovski9623.bsky.social</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/bluethebone.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/propic-bluethebone.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">ʙʟᴜᴇᴛʜᴇʙᴏɴᴇ <span class="nsfw-tag">nsfw</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @bluethebone.bsky.social</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/pinkseito.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/twitterpropic-PinkSeito.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">Orphen <span class="nsfw-tag">nsfw</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @pinkseito.bsky.social</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/bartolomeobari.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/twitterpropic-bartolomeobari2.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">bartolomeobari <span class="nsfw-tag">nsfw</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @bartolomeobari.bsky.social</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://x.com/parkjinsuky">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/parkjinsuky.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">pjsdraw <span class="nsfw-tag">nsfw</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-twitter lf-handle-icon"></i> @parkjinsuky</span>
+							</div>
+						</div>
+					</a>					
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/thegoldensmurf.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/TheGoldenSmurf.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">TheGoldenSmurf <span class="nsfw-tag">nsfw</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @thegoldensmurf.bsky.social</span>
+							</div>
+						</div>
+					</a>										
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/hews1.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/twitterpropic-hews__.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">hews <span class="nsfw-tag">nsfw</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @hews1.bsky.social</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://x.com/Phat_Smash">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/twitterpropic-Phat_Smash.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">PhatSmash <span class="nsfw-tag">nsfw</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-twitter lf-handle-icon"></i> @Phat_Smash</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/hornygraphite.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/HGDemonBoy.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">HGDemonBoy <span class="nsfw-tag">nsfw</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @hornygraphite.bsky.social</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/semidraws.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/SemiDraws.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">SemiDraws <span class="nsfw-tag">nsfw</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @semidraws.bsky.social</span>
+							</div>
+						</div>
+					</a>
+					<a class="lf-link more-lf-artistfanart" href="https://bsky.app/profile/echosaber.bsky.social">
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/EchoSaber.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">EchoSaber <span class="nsfw-tag">nsfw</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-bluesky lf-handle-icon"></i> @echosaber.bsky.social</span>
+							</div>
+						</div>
+					</a>					
+					<!--
+					<a class="lf-link more-lf-artistfanart" href="https://x.com/lewdamone"></a>
+						<div class="lf-item-container">								
+							<img loading="Lazy" class="lf-image" src="assets/images/icons/lewdamone.jpg"></img>
+							<div class="lf-text">
+								<span class="lf-displayname">lawdy lewd <span class="nsfw-tag">nsfw</span></span>
+								<span class="lf-handle"><i class="fa-brands fa-twitter lf-handle-icon"></i> @lewdamone</span>
+							</div>
+						</div>
+					</a>
+					-->
+				
+				</div><!-- Fanart -->
+			</div><!-- links and follows -->
+
+			<div id="footer">
+				<h2 class="footer-header">やっほー！👋</h2>
+				<p class="footer-text">ここまで見てくれてありがとうございます！
+いろいろ繋がってもらえると嬉しいです。私のゲーム遍歴、ちょっと変かもしれないですけど（笑）、共感してくれる人がいたらぜひ！</p>
+				<div id="footer_socials">
+				 <a href="https://tiktok.com/@kazokumina" id="footer-social-tiktok"class="footer-social-item"><i class="fa-brands fa-tiktok"></i></a> 
+							<!--	<a href="" id="bio-social-mastodon"class="bio-social-item"><i class="fa-brands fa-mastodon"></i></a> -->
+					<a href="" id="footer-social-instagram"class="footer-social-item"><i class="fa-brands fa-instagram"></i></a>
+					<a href="https://youtube.com/channel/UCu4BJJ7E18JR_B-ZoLKckYw?si=f-MK_5Pjaukz4GCh" id="footer-social-youtube"class="footer-social-item"><i class="fa-brands fa-youtube"></i></a>
+				</div>
+				<p class="copyright">&copy; 2026 Kazokumina, All rights reserved</p>
+			</div>
+			<!-- footer -->
+		</div><!--pagewrapper-->
+	</body>
+</html>
