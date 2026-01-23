@@ -362,7 +362,7 @@ function tab_continuity () {
 
 	/*scaling profile banner image by height or width,
 		depending on screen size 
-	*/
+	
 	if (w < 965) {
 		var banner = document.getElementById("profile_banner");
 		banner.style.height = "100%";
@@ -373,7 +373,7 @@ function tab_continuity () {
 		banner.style.width = "100%";
 		banner.style.height = "";
 	}
-
+*/
 	if (w < 900) {
 		console.log("calling column one");
 		one_column();
