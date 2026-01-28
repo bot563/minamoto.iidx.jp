@@ -1,0 +1,13 @@
+{
+  "names": {
+    "kazokumina": "4662bfe3038da9aff36b86eac1c75f8643b9ed779eaba1147027039de5f69143"
+  },
+  "relays": {
+    "4662bfe3038da9aff36b86eac1c75f8643b9ed779eaba1147027039de5f69143": [
+      "wss://relay.nostr.wirednet.jp",
+      "wss://relay.yozora.world",
+      "wss://yabu.me"
+    ]
+  }
+}
+
